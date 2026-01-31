@@ -98,3 +98,92 @@ Presenter - презентер содержит основную логику п
 `emit<T extends object>(event: string, data?: T): void` - инициализация события. При вызове события в метод передается название события и объект с данными, который будет использован как аргумент для вызова обработчика.  
 `trigger<T extends object>(event: string, context?: Partial<T>): (data: T) => void` - возвращает функцию, при вызове которой инициализируется требуемое в параметрах событие с передачей в него данных из второго параметра.
 
+##### Данные
+
+В ходе анализа проекта было установлено: в приложении используются две сущности, которые описывают данные, — товар и покупатель. Их можно описать такими интерфейсами:
+
+###### Интерфейсы данных 
+
+###### IProduct — товар
+
+`interface IProduct {`
+  `id: string;`
+  `description: string;`
+  `image: string;`
+  `title: string;`
+  `category: string;`
+  `price: number | null;`
+`}`
+
+id — уникальный идентификатор товара
+description — описание товара
+image — ссылка на изображение
+title — название товара
+category — категория товара
+price — цена товара (может отсутствовать)
+
+###### IBuyer — покупатель
+`interface IBuyer {`
+  `payment: TPayment;`
+  `email: string;`
+  `phone: string;`
+  `address: string;`
+`}`
+
+payment — способ оплаты
+email — электронная почта
+phone — номер телефона
+address — адрес доставки
+
+###### Модели данных
+
+###### Каталог товаров (ProductsModel)
+Назначение: Хранение всех товаров и управление товаром для детального отображения.
+
+Поля класса:
+
+`products: IProduct[]` — массив всех товаров
+`previewProduct: IProduct | null` — выбранный товар
+
+Методы класса:
+`setProducts(products: IProduct[]): void`
+`getProducts(): IProduct[]`
+`getProductById(id: string): IProduct | undefined`
+`setPreviewProduct(product: IProduct): void`
+`getPreviewProduct(): IProduct | null`
+
+###### Корзина (BasketModel)
+
+Назначение: Хранение товаров, выбранных пользователем для покупки.
+
+Поля класса:
+
+`items: IProduct[]` — товары в корзине
+
+Методы класса:
+
+`getItems(): IProduct[]`
+`addItem(product: IProduct): void`
+`removeItem(product: IProduct): void`
+`clear(): void`
+`getTotalPrice(): number`
+`getItemsCount(): number`
+`hasItem(id: string): boolean`
+
+##### Покупатель (BuyerModel)
+
+Назначение: Хранение, обновление и валидация данных покупателя.
+
+Поля класса:
+
+`payment: TPayment | null`
+`email: string`
+`phone: string`
+`address: string`
+
+Методы класса:
+
+`setData(data: Partial<IBuyer>): void`
+`getData(): IBuyer`
+`clear(): void`
+`validate(): Partial<Record<keyof IBuyer, string>>`
