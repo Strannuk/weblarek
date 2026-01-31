@@ -130,12 +130,12 @@ interface IBuyer {
   phone: string;
   address: string;
 }
-```
+
 payment — способ оплаты
 email — электронная почта
 phone — номер телефона
 address — адрес доставки
-
+```
 #### Модели данных
 
 ##### Каталог товаров (ProductsModel)
