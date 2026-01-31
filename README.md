@@ -105,16 +105,16 @@ Presenter - презентер содержит основную логику п
 #### Интерфейсы данных 
 
 ##### IProduct — товар
-
-`interface IProduct {`
-  `id: string;`
-  `description: string;`
-  `image: string;`
-  `title: string;`
-  `category: string;`
-  `price: number | null;`
-`}`
-
+```
+interface IProduct {
+  id: string;
+  description: string;
+  image: string
+  title: string;
+  category: string;
+  price: number | null;
+}
+```
 id — уникальный идентификатор товара
 description — описание товара
 image — ссылка на изображение
@@ -123,13 +123,14 @@ category — категория товара
 price — цена товара (может отсутствовать)
 
 ##### IBuyer — покупатель
-`interface IBuyer {`
-  `payment: TPayment;`
-  `email: string;`
-  `phone: string;`
-  `address: string;`
-`}`
-
+```
+interface IBuyer {
+  payment: TPayment;
+  email: string;
+  phone: string;
+  address: string;
+}
+```
 payment — способ оплаты
 email — электронная почта
 phone — номер телефона
@@ -141,17 +142,18 @@ address — адрес доставки
 Назначение: Хранение всех товаров и управление товаром для детального отображения.
 
 Поля класса:
-
-`products: IProduct[]` — массив всех товаров
-`previewProduct: IProduct | null` — выбранный товар
-
+```
+products: IProduct[] — массив всех товаров
+previewProduct: IProduct | null — выбранный товар
+```
 Методы класса:
-`setProducts(products: IProduct[]): void`
-`getProducts(): IProduct[]`
-`getProductById(id: string): IProduct | undefined`
-`setPreviewProduct(product: IProduct): void`
-`getPreviewProduct(): IProduct | null`
-
+```
+setProducts(products: IProduct[]): void
+getProducts(): IProduct[]
+getProductById(id: string): IProduct | undefined
+setPreviewProduct(product: IProduct): void
+getPreviewProduct(): IProduct | null
+```
 ##### Корзина (BasketModel)
 
 Назначение: Хранение товаров, выбранных пользователем для покупки.
@@ -161,29 +163,30 @@ address — адрес доставки
 `items: IProduct[]` — товары в корзине
 
 Методы класса:
-
-`getItems(): IProduct[]`
-`addItem(product: IProduct): void`
-`removeItem(product: IProduct): void`
-`clear(): void`
-`getTotalPrice(): number`
-`getItemsCount(): number`
-`hasItem(id: string): boolean`
-
+```
+getItems(): IProduct[]
+addItem(product: IProduct): void
+removeItem(product: IProduct): void
+clear(): void
+getTotalPrice(): number
+getItemsCount(): number
+hasItem(id: string): boolean
+```
 ##### Покупатель (BuyerModel)
 
 Назначение: Хранение, обновление и валидация данных покупателя.
 
 Поля класса:
-
-`payment: TPayment | null`
-`email: string`
-`phone: string`
-`address: string`
-
+```
+payment: TPayment | null
+email: string
+phone: string
+address: string
+```
 Методы класса:
-
-`setData(data: Partial<IBuyer>): void`
-`getData(): IBuyer`
-`clear(): void`
-`validate(): Partial<Record<keyof IBuyer, string>>`
+```
+setData(data: Partial<IBuyer>): void
+getData(): IBuyer
+clear(): void
+validate(): Partial<Record<keyof IBuyer, string>>
+```
