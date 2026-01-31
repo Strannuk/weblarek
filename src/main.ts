@@ -10,6 +10,8 @@ products.setProducts(apiProducts.items);
 console.log("Массив товаров:", products.getProducts());
 const firstProductId = products.getProducts()[0].id;
 console.log("Товар по id:", products.getProductsById(firstProductId));
+const firstProduct = products.getProducts()[0];
+products.setPreviewProducts(firstProduct);
 console.log("Товар для просмотра:", products.getPreviewProducts());
 
 const basket = new Basket();
@@ -26,12 +28,18 @@ console.log("Корзина после очистки:", basket.getItems());
 
 const buyer = new Buyer();
 buyer.setData({
-  payment: "cash",
+  payment: "Наличные",
   email: "belokamensky.kirill@yandex.ru",
   phone: "+79786511797",
   address: "Россия, Крым, г. Симферополь, ул. Пушкина, д. 22"
 });
 console.log("Данные покупателя:", buyer.getData());
+buyer.setData({
+  payment: "Наличные",
+  email: "",
+  phone: "",
+  address: ""
+});
 console.log("Результат проверки данных:", buyer.validate());
 buyer.clear();
 console.log("Данные покупателя после очистки:", buyer.getData());

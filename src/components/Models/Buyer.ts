@@ -1,4 +1,5 @@
 import { IBuyer } from "../../types";
+import { BuyerValidationErrors } from "../../types";
 
 export class Buyer {
   private payment: IBuyer['payment'] | null = null;
@@ -29,8 +30,8 @@ export class Buyer {
     this.address = "";
   }
 
-  validate(): Partial<Record<keyof IBuyer, string>> {
-    const errors: Partial<Record<keyof IBuyer, string>> = {};
+  validate(): BuyerValidationErrors {
+    const errors: BuyerValidationErrors = {};
     if (!this.payment) errors.payment = "Не выбран вид оплаты";
     if (!this.email) errors.email = "Укажите email";
     if (!this.phone) errors.phone = "Укажите телефон";
