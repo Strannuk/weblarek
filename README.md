@@ -114,14 +114,14 @@ interface IProduct {
   category: string;
   price: number | null;
 }
-```
+
 id — уникальный идентификатор товара
 description — описание товара
 image — ссылка на изображение
 title — название товара
 category — категория товара
 price — цена товара (может отсутствовать)
-
+```
 ##### IBuyer — покупатель
 ```
 interface IBuyer {
