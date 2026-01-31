@@ -127,7 +127,7 @@ price — цена товара (может отсутствовать)
 ##### IBuyer — покупатель
 ```
 interface IBuyer {
-  payment: TPayment;
+  payment: any;
   email: string;
   phone: string;
   address: string;
@@ -140,7 +140,7 @@ address — адрес доставки
 ```
 #### Модели данных
 
-##### Каталог товаров (ProductsModel)
+##### Каталог товаров (Products)
 Назначение: Хранение всех товаров и управление товаром для детального отображения.
 
 Поля класса:
@@ -156,7 +156,7 @@ getProductById(id: string): IProduct | undefined
 setPreviewProduct(product: IProduct): void
 getPreviewProduct(): IProduct | null
 ```
-##### Корзина (BasketModel)
+##### Корзина (Basket)
 
 Назначение: Хранение товаров, выбранных пользователем для покупки.
 
@@ -174,13 +174,13 @@ getTotalPrice(): number
 getItemsCount(): number
 hasItem(id: string): boolean
 ```
-##### Покупатель (BuyerModel)
+##### Покупатель (Buyer)
 
 Назначение: Хранение, обновление и валидация данных покупателя.
 
 Поля класса:
 ```
-payment: TPayment | null
+payment: null
 email: string
 phone: string
 address: string
