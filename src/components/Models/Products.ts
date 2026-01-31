@@ -20,7 +20,7 @@ export class Products {
     this.previewProducts = products;
   }
 
-  gerPreviewProducts() : IProduct | null {
+  getPreviewProducts() : IProduct | null {
     return this.previewProducts;
   }
 }

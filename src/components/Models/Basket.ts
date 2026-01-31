@@ -3,7 +3,7 @@ import { IProduct } from "../../types";
 export class Basket {
   private items: IProduct[] = [];
 
-  getItem(): IProduct[] {
+  getItems(): IProduct[] {
     return this.items;
   }
 
