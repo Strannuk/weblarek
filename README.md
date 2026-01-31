@@ -190,3 +190,18 @@ getData(): IBuyer
 clear(): void
 validate(): Partial<Record<keyof IBuyer, string>>
 ```
+
+#### Слой коммуникации
+
+Назначение: Класс отвечает за получение данных с сервера и отправку данных на сервер.
+Использует композицию: внутри хранит объект IApi и вызывает его методы get и post.
+
+Методы:
+```
+fetchProducts(): Promise<IProduct[]>
+Делает GET-запрос на эндпоинт /product/
+Возвращает массив товаров
+sendOrder(data: { buyer: IBuyer; items: IProduct[] }): Promise<object>
+Делает POST-запрос на эндпоинт /order/
+Передаёт объект с данными покупателя и массивом выбранных товаров
+```
