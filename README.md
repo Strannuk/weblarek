@@ -122,7 +122,7 @@ description — описание товара
 image — ссылка на изображение
 title — название товара
 category — категория товара
-price — цена товара (может отсутствовать)
+price — цена товара
 ```
 ##### IBuyer — покупатель
 ```
@@ -150,11 +150,12 @@ previewProduct: IProduct | null — выбранный товар
 ```
 Методы класса:
 ```
-setProducts(products: IProduct[]): void
-getProducts(): IProduct[]
-getProductById(id: string): IProduct | undefined
-setPreviewProduct(product: IProduct): void
-getPreviewProduct(): IProduct | null
+setProducts(products: IProduct[]): void - сохранение массива товаров полученного с сервера 
+getProducts(): IProduct[] - возвращение полного списка товаров 
+
+getProductById(id: string): IProduct | undefined - поиск товара по его ID
+setPreviewProduct(product: IProduct): void - устанавливает товар для отображения 
+getPreviewProduct(): IProduct | null - Возвращает выбранный товар для отображение или 0 - если товар не выбран 
 ```
 ##### Корзина (Basket)
 
@@ -166,13 +167,13 @@ getPreviewProduct(): IProduct | null
 
 Методы класса:
 ```
-getItems(): IProduct[]
-addItem(product: IProduct): void
-removeItem(product: IProduct): void
-clear(): void
-getTotalPrice(): number
-getItemsCount(): number
-hasItem(id: string): boolean
+getItems(): IProduct[] - получение списка товаров, которые находятся в корзине 
+addItem(product: IProduct): void - добавление выбранного товара в корзину
+removeItem(product: IProduct): void - удаление указанного товара из корзины
+clear(): void - полная очистка корзины
+getTotalPrice(): number - вычесление полной стоимости товара в корзине 
+getItemsCount(): number - вычесление количества товаров в корзине
+hasItem(id: string): boolean - проверка, добавлен ли товар с указанным ID в корзину
 ```
 ##### Покупатель (Buyer)
 
@@ -180,17 +181,17 @@ hasItem(id: string): boolean
 
 Поля класса:
 ```
-payment: null
-email: string
-phone: string
-address: string
+payment: null - способ оплаты
+email: string - электронная почта
+phone: string - номер телефона 
+address: string - адрес
 ```
 Методы класса:
 ```
-setData(data: Partial<IBuyer>): void
-getData(): IBuyer
-clear(): void
-validate(): Partial<Record<keyof IBuyer, string>>
+setData(data: Partial<IBuyer>): void - обновление данных покупателя при вводе данных в окне оформления заказа
+getData(): IBuyer - возвращает текущие данные покупателя
+clear(): void - очистка данных 
+validate(): Partial<Record<keyof IBuyer, string>> - проверка корректности введенных данных. Возвращает ошибки, если они есть.
 ```
 
 #### Слой коммуникации
@@ -200,10 +201,6 @@ validate(): Partial<Record<keyof IBuyer, string>>
 
 Методы:
 ```
-fetchProducts(): Promise<IProduct[]>
-Делает GET-запрос на эндпоинт /product/
-Возвращает массив товаров
-sendOrder(data: { buyer: IBuyer; items: IProduct[] }): Promise<object>
-Делает POST-запрос на эндпоинт /order/
-Передаёт объект с данными покупателя и массивом выбранных товаров
+fetchProducts(): Promise<IProduct[]> - Делает GET-запрос на эндпоинт /product/. Возвращает массив товаров
+sendOrder(data: { buyer: IBuyer; items: IProduct[] }): Promise<object> - Делает POST-запрос на эндпоинт /order/. Передаёт объект с данными покупателя и массивом выбранных товаров
 ```
