@@ -20,3 +20,8 @@ export interface IBuyer {
     phone:string;
     address: string;
 }
+
+export interface IOrder {
+    buyer: IBuyer;
+    items: IProduct[];
+}

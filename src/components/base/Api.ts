@@ -34,4 +34,8 @@ export class Api {
             body: JSON.stringify(data)
         }).then(this.handleResponse<T>);
     }
+    getBaseUrl() {
+    return this.baseUrl;
 }
+}
+
