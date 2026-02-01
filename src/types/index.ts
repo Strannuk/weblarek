@@ -14,8 +14,10 @@ export interface IProduct {
     price: number | null;
 }
 
+export type PaymentMethod = 'cash' | 'card' | '';
+
 export interface IBuyer {
-    payment: any;
+    payment: PaymentMethod;
     email:string;
     phone:string;
     address: string;
@@ -28,11 +30,7 @@ export interface IOrder {
 
 export type BuyerValidationErrors = Partial<Record<keyof IBuyer, string>>;
 
-export interface IOrderRequest {
-  payment: string;
-  email: string;
-  phone: string;
-  address: string;
+export interface IOrderRequest extends IBuyer {
   total: number;
   items: string[];
 }

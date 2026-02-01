@@ -28,14 +28,14 @@ console.log("Корзина после очистки:", basket.getItems());
 
 const buyer = new Buyer();
 buyer.setData({
-  payment: "Наличные",
+  payment: "cash",
   email: "belokamensky.kirill@yandex.ru",
   phone: "+79786511797",
   address: "Россия, Крым, г. Симферополь, ул. Пушкина, д. 22"
 });
 console.log("Данные покупателя:", buyer.getData());
 buyer.setData({
-  payment: "Наличные",
+  payment: "cash",
   email: "",
   phone: "",
   address: ""

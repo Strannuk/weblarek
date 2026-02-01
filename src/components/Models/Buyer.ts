@@ -2,7 +2,7 @@ import { IBuyer } from "../../types";
 import { BuyerValidationErrors } from "../../types";
 
 export class Buyer {
-  private payment: IBuyer['payment'] | null = null;
+  private payment: IBuyer['payment'] = "";
   private email: string = "";
   private phone: string = "";
   private address: string = "";
@@ -24,7 +24,7 @@ export class Buyer {
   }
   
   clear(): void {
-    this.payment = null;
+    this.payment = "";
     this.email = "";
     this.phone = "";
     this.address = "";
