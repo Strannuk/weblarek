@@ -11,11 +11,11 @@ export class Basket {
     this.items.push(product);
   }
 
-  removeItem(product: IProduct) : void {
-    this.items = this.items.filter(item => item.id !== product.id);
+  removeItem(product: IProduct): void {
+    this.items = this.items.filter((item) => item.id !== product.id);
   }
 
-  clear():void {
+  clear(): void {
     this.items = [];
   }
 
@@ -27,7 +27,7 @@ export class Basket {
     return this.items.length;
   }
 
-  hasItem (id: string): boolean {
-    return this.items.some(item => item.id === id);
+  hasItem(id: string): boolean {
+    return this.items.some((item) => item.id === id);
   }
 }

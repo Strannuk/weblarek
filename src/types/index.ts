@@ -1,31 +1,35 @@
-export type ApiPostMethods = 'POST' | 'PUT' | 'DELETE';
+export type ApiPostMethods = "POST" | "PUT" | "DELETE";
 
 export interface IApi {
-    get<T extends object>(uri: string): Promise<T>;
-    post<T extends object>(uri: string, data: object, method?: ApiPostMethods): Promise<T>;
+  get<T extends object>(uri: string): Promise<T>;
+  post<T extends object>(
+    uri: string,
+    data: object,
+    method?: ApiPostMethods,
+  ): Promise<T>;
 }
 
 export interface IProduct {
-    id: string;
-    description: string;
-    image: string;
-    title: string;
-    category: string;
-    price: number | null;
+  id: string;
+  description: string;
+  image: string;
+  title: string;
+  category: string;
+  price: number | null;
 }
 
-export type PaymentMethod = 'cash' | 'card' | '';
+export type PaymentMethod = "card" | "cash" | "";
 
 export interface IBuyer {
-    payment: PaymentMethod;
-    email:string;
-    phone:string;
-    address: string;
+  payment: PaymentMethod;
+  email: string;
+  phone: string;
+  address: string;
 }
 
 export interface IOrder {
-    buyer: IBuyer;
-    items: IProduct[];
+  buyer: IBuyer;
+  items: IProduct[];
 }
 
 export type BuyerValidationErrors = Partial<Record<keyof IBuyer, string>>;
@@ -38,4 +42,8 @@ export interface IOrderRequest extends IBuyer {
 export interface IOrderResponse {
   id: string;
   total: number;
+}
+
+export interface ICardActions {
+  onClick?: () => void;
 }
