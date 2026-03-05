@@ -207,7 +207,8 @@ function openContactsForm() {
     const buyerData = buyer.getData();
     contactsForm.email = buyerData.email;
     contactsForm.phone = buyerData.phone;
-    const errors = buyer.validate(); contactsForm.allowed = !errors.email && !errors.phone;
+    const errors = buyer.validate();
+    contactsForm.allowed = !errors.email && !errors.phone;
   };
 
   updateForm();

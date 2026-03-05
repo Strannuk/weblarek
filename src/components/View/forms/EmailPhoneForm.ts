@@ -53,8 +53,6 @@ export class EmailPhoneForm extends Form<EmailPhoneFormData> {
   }
 
   set allowed(value: boolean) {
-  this.submitButton.disabled = !value;
-}
-
-  
+    this.submitButton.disabled = !value;
+  }
 }

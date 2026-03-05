@@ -34,6 +34,7 @@ export class ModalWindow extends Component<any> {
     this.modalContainer.classList.remove("modal_active");
   }
 
-  isOpen(): boolean { return this.modalContainer.classList.contains("modal_active"); }
-  
+  isOpen(): boolean {
+    return this.modalContainer.classList.contains("modal_active");
+  }
 }
