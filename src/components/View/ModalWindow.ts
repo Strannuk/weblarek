@@ -23,8 +23,7 @@ export class ModalWindow extends Component<any> {
   }
 
   set content(item: HTMLElement) {
-    this.contentContainer.innerHTML = "";
-    this.contentContainer.appendChild(item);
+    this.contentContainer.replaceChildren(item);
   }
 
   open() {
@@ -34,4 +33,7 @@ export class ModalWindow extends Component<any> {
   close() {
     this.modalContainer.classList.remove("modal_active");
   }
+
+  isOpen(): boolean { return this.modalContainer.classList.contains("modal_active"); }
+  
 }

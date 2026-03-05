@@ -14,15 +14,7 @@ export class Gallery extends Component<GalleryData> {
   ) {
     super(container);
 
-    if (container.classList.contains("gallery")) {
-      this.galleryElement = container;
-    } else {
-      const element = container.querySelector(".gallery");
-      if (!element) {
-        throw new Error("Gallery element not found");
-      }
-      this.galleryElement = element as HTMLElement;
-    }
+    this.galleryElement = container;
   }
 
   set gallery(items: HTMLElement[]) {

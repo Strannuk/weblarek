@@ -11,7 +11,6 @@ export class BasketModal extends Component<BasketModalData> {
   protected listElement: HTMLElement;
   protected registerButton: HTMLButtonElement;
   protected totalPriceElement: HTMLElement;
-  protected emptyElement: HTMLElement | null;
 
   constructor(
     container: HTMLElement,
@@ -31,7 +30,6 @@ export class BasketModal extends Component<BasketModalData> {
       ".basket__price",
       this.container,
     );
-    this.emptyElement = this.container.querySelector(".basket__empty");
 
     this.registerButton.addEventListener("click", () => {
       this.events.emit("basket:submit");
@@ -42,11 +40,6 @@ export class BasketModal extends Component<BasketModalData> {
     this.listElement.replaceChildren(...items);
 
     const isEmpty = items.length === 0;
-
-    if (this.emptyElement) {
-      this.emptyElement.textContent = isEmpty ? "Корзина пуста" : "";
-    }
-
     this.registerButton.disabled = isEmpty;
   }
 

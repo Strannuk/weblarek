@@ -31,14 +31,12 @@ export class EmailPhoneForm extends Form<EmailPhoneFormData> {
       this.events.emit("email:input", {
         value: this.emailInputElement.value,
       });
-      this.updateButtonState();
     });
 
     this.phoneInputElement.addEventListener("input", () => {
       this.events.emit("phone:input", {
         value: this.phoneInputElement.value,
       });
-      this.updateButtonState();
     });
 
     this.submitButton.addEventListener("click", () => {
@@ -46,41 +44,17 @@ export class EmailPhoneForm extends Form<EmailPhoneFormData> {
     });
   }
 
-  validateEmail(value: string): boolean {
-    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
-  }
-
-  validatePhone(value: string): boolean {
-    return /^\+?\d{10,15}$/.test(value);
-  }
-
-  updateButtonState() {
-    const email = this.emailInputElement.value.trim();
-    const phone = this.phoneInputElement.value.trim();
-
-    let error = "";
-
-    if (!email) {
-      error = "Укажите email";
-    } else if (!this.validateEmail(email)) {
-      error = "Некорректный email";
-    } else if (!phone) {
-      error = "Укажите телефон";
-    } else if (!this.validatePhone(phone)) {
-      error = "Некорректный номер телефона";
-    }
-
-    this.errors = error;
-    this.isallowedButton(Boolean(error));
-  }
-
   set email(value: string) {
     this.emailInputElement.value = value;
-    this.updateButtonState();
   }
 
   set phone(value: string) {
     this.phoneInputElement.value = value;
-    this.updateButtonState();
   }
+
+  set allowed(value: boolean) {
+  this.submitButton.disabled = !value;
+}
+
+  
 }

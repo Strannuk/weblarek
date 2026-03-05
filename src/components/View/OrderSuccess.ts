@@ -24,7 +24,7 @@ export class OrderSuccess extends Component<OrderSuccessData> {
       this.container,
     );
     this.successButton.addEventListener("click", () => {
-      this.events.emit("orderSucces:close");
+      this.events.emit("orderSuccess:close");
     });
   }
 
